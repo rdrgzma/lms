@@ -6,6 +6,7 @@ use App\Filament\Resources\Courses\Pages\CreateCourse;
 use App\Filament\Resources\Courses\Pages\EditCourse;
 use App\Filament\Resources\Courses\Pages\ListCourses;
 use App\Filament\Resources\Courses\Pages\ViewCourse;
+use App\Filament\Resources\Courses\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\Courses\RelationManagers\VideosRelationManager;
 use App\Filament\Resources\Courses\Schemas\CourseForm;
 use App\Filament\Resources\Courses\Schemas\CourseInfolist;
@@ -54,7 +55,8 @@ class CourseResource extends Resource
     public static function getRelations(): array
     {
         return [
-            VideosRelationManager::class
+            VideosRelationManager::class,
+            UsersRelationManager::class
         ];
     }
 

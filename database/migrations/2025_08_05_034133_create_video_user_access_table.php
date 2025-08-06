@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('video_user_access', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('video_id')->constrained()->cascadeOnDelete();
-            $table->text('message');
-            $table->text('response')->nullable();
-            $table->foreignId('responded_by')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('parent_id')->nullable()->constrained('comments')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->boolean('is_unlocked')->default(false);
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('video_user_access');
     }
 };

@@ -71,6 +71,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 //
             ])
+            ->sidebarFullyCollapsibleOnDesktop()
             ->unsavedChangesAlerts()
             ->passwordReset()
             ->profile()

@@ -18,4 +18,9 @@ class Course extends Model
     public function videos() {
         return $this->hasMany(Video::class);
     }
+    public function users() {
+        return $this->belongsToMany(User::class)
+            ->withPivot(['user_id','progress', 'has_started', 'has_finished', 'started_at', 'finished_at'])
+            ->withTimestamps();
+    }
 }

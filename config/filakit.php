@@ -14,7 +14,7 @@ return [
     'theme_mode' => ThemeMode::Light,
     'guest_panel_enabled' => false,
     'admin_panel_enabled' => true,
-    'app_panel_enabled' => false,
+    'app_panel_enabled' => true,
     'favicon' => [
         'enabled' => true,
         'manifest' => [

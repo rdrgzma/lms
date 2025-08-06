@@ -95,12 +95,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             'status' => 'boolean',
         ];
     }
+    public function courses() {
+        return $this->belongsToMany(Course::class)
+            ->withPivot(['progress', 'has_started', 'has_finished', 'started_at', 'finished_at'])
+            ->withTimestamps();
+    }
 
     public function videos() {
         return $this->belongsToMany(Video::class)
             ->withPivot(['is_unlocked', 'has_started', 'has_finished', 'progress', 'started_at', 'finished_at'])
             ->withTimestamps();
     }
+    public function accessibleVideos()
+    {
+        return $this->belongsToMany(Video::class, 'video_user_access')
+            ->withPivot('is_unlocked')
+            ->withTimestamps();
+    }
+
 
     public function comments() {
         return $this->hasMany(Comment::class);

@@ -22,4 +22,8 @@ class Comment extends Model
     public function responder() {
         return $this->belongsTo(User::class, 'responded_by');
     }
+    public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }

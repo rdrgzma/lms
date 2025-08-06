@@ -27,6 +27,13 @@ class Video extends Model
             ->withPivot(['is_unlocked', 'has_started', 'has_finished', 'progress', 'started_at', 'finished_at'])
             ->withTimestamps();
     }
+    public function authorizedUsers()
+    {
+        return $this->belongsToMany(User::class, 'video_user_access')
+            ->withPivot('is_unlocked')
+            ->withTimestamps();
+    }
+
 
     public function comments() {
         return $this->hasMany(Comment::class);
